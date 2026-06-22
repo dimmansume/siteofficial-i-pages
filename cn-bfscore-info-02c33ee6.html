@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>比分网 – 实时赛事信息 · 数据基准</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #fafafa;
+            color: #1e1e1e;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            max-width: 680px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 3.5rem 0 5rem;
+        }
+
+        /* 主视觉 — 干净标题组 */
+        .hero {
+            margin-bottom: 4rem;
+            padding-top: 2rem;
+        }
+
+        .hero .tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            letter-spacing: .08em;
+            color: #777;
+            text-transform: uppercase;
+            border: 1px solid #ddd;
+            padding: 0.2rem 0.75rem;
+            border-radius: 999px;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            color: #0b0b0b;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #555;
+            max-width: 540px;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #e4e4e4;
+            margin: 2rem 0;
+        }
+
+        /* 信息卡片 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 1.6rem 1.8rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid #f0f0f0;
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.02);
+        }
+
+        .card h2 {
+            font-size: 1.2rem;
+            font-weight: 550;
+            margin-bottom: 0.7rem;
+            letter-spacing: -0.01em;
+            color: #111;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #3a3a3a;
+            margin-bottom: 0.3rem;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        .card li {
+            font-size: 0.925rem;
+            color: #333;
+            padding: 0.2rem 0;
+            padding-left: 0.9rem;
+            position: relative;
+        }
+
+        .card li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: #aaa;
+        }
+
+        .inline-link {
+            color: #0077be;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #cde3f0;
+            transition: color 0.15s, text-decoration-color 0.15s;
+        }
+
+        .inline-link:hover {
+            color: #004b7a;
+            text-decoration-color: #004b7a;
+        }
+
+        .section-head {
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            color: #2a2a2a;
+            border-bottom: 1px solid #ececec;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .text-block {
+            margin: 1.8rem 0;
+        }
+
+        .text-block p {
+            margin-bottom: 1rem;
+            font-size: 0.97rem;
+            color: #2c2c2c;
+        }
+
+        .faq-slim {
+            margin-top: 3rem;
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 1.6rem 1.8rem;
+            border: 1px solid #ededed;
+        }
+
+        .faq-slim h3 {
+            font-size: 1rem;
+            font-weight: 550;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+        }
+
+        .faq-item strong {
+            font-weight: 500;
+            color: #1e1e1e;
+            display: inline-block;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item p {
+            font-size: 0.9rem;
+            color: #555;
+            margin-left: 0.2rem;
+        }
+
+        .footnote {
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            color: #888;
+            text-align: left;
+            border-top: 1px solid #eaeaea;
+            padding-top: 1.5rem;
+        }
+
+        @media (max-width: 480px) {
+            .page { padding: 2rem 0 3.5rem; }
+            .hero h1 { font-size: 2rem; }
+            .card { padding: 1.2rem 1.4rem; }
+            .faq-slim { padding: 1.2rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero -->
+    <div class="hero">
+        <div class="tag">信息基准</div>
+        <h1>比分网<br>实时赛事数据</h1>
+        <p>覆盖足球、篮球、网球及主流联赛的即时比分与赛程结构。稳定入口，轻量快照，面向需要快速确认比赛状态的用户。</p>
+    </div>
+
+    <!-- 用途卡片 -->
+    <div class="card-grid">
+        <div class="card">
+            <h2>即时赛况 · 节奏优先</h2>
+            <p>无论你正在通勤、观赛还是追踪多个联赛，<a href="https://cn-bfscore.com" class="inline-link">比分网</a>提供结构化的实时数据——主客队、当前比分、比赛阶段及关键事件（进球、红黄牌、换人）。页面布局优先信息层级，减少视觉干扰。</p>
+        </div>
+        <div class="card">
+            <h2>赛事归档与提醒</h2>
+            <p>已结束场次的完整比分、半场数据及历史对阵趋势。适合复盘、数据查询以及赛前快速确认对手近况。无需注册，直接使用。</p>
+        </div>
+    </div>
+
+    <!-- 场景 + 人群 合并在自然段落 -->
+    <div class="text-block">
+        <div class="section-head">适用场景与人群</div>
+        <p>日常关注五大联赛、欧冠、NBA、网球大满贯的球迷，或需要利用比分信息做快速决策的体育内容编辑、数据分析轻用户。比分网适合作为多终端统一的比分快照——桌面查赛程，移动端看实时变化。没有弹窗式推广，没有冗余模块，只围绕“此刻比分”这一核心。</p>
+        <p>页面设计强调低认知负荷：每场比赛用卡片或列表清晰展示, 联赛/赛事标签、时间线、比分数字一目了然。对于同时关注多场的用户，减少页面滚动与跳转成本。</p>
+    </div>
+
+    <!-- 稳定入口说明 自然链接 -->
+    <div class="card" style="margin-bottom: 0.5rem;">
+        <h2>访问方式与数据流向</h2>
+        <p>直接访问 <a href="https://cn-bfscore.com" class="inline-link">比分网</a> 即可进入赛事总览。数据接口来源于赛事供应商及公开统计源，更新间隔控制在秒级至分钟级。站点不保存个人浏览记录，不要求登录。如果希望保持入口简洁，可将网址添加至浏览器书签或主屏幕。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-slim">
+        <h3>常见简短说明</h3>
+        <div class="faq-item">
+            <strong>覆盖哪些赛事？</strong>
+            <p>主流足球联赛（英超、西甲、意甲、德甲、法甲、中超、J联赛等）、欧冠、欧联、NBA、欧洲篮球联赛、ATP/WTA 网球、部分电竞及手球赛事。持续扩展。</p>
+        </div>
+        <div class="faq-item">
+            <strong>是否提供历史比分下载？</strong>
+            <p>页面上可直接查看过往 7–30 天完赛场次。批量数据或 API 接口暂未开放，但页面自身可复制粘贴用于个人分析。</p>
+        </div>
+        <div class="faq-item">
+            <strong>移动端体验如何？</strong>
+            <p>采用响应式布局，手机浏览器下字体与触摸区域适配，横竖屏均可用。不推荐使用第三方 app 包装，原生浏览器效果更稳定。</p>
+        </div>
+    </div>
+
+    <div class="footnote">
+        比分网 · 以信息密度与稳定入口为准则。无广告弹窗，无用户追踪模块。
+    </div>
+
+</div>
+</body>
+</html>
